@@ -22,7 +22,7 @@ Vehicle = 1;
 
 switch Vehicle
     case 1 % Car
-        %Wbatt = 10*3.6e6;  % Battery Energy in [Ws], XX in [kWh]
+        Wbatt = Wbatt*3.6e6;  % Battery Energy in [Ws], XX in [kWh]
         Mv = 1864+batt_weight;         % Vehicle weight [kg]
         rw = 0.30;	        % wheel radius (m)
         Cd = 0.29; 	        % air_resistance Check this!
@@ -160,16 +160,16 @@ end
 
 %%% Some code to repeat the drive cycle and plot some of it:
 
-% repeat=5;
-% slask=cycle;
-% if repeat>1,
-%     for i=2:repeat,
-%         slask = [slask; cycle];
-%         slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),1) = slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),1) + slask(length(slask(:,1))-length(cycle(:,1)),1);
-%         slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),3) = slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),3) + slask(length(slask(:,1))-length(cycle(:,1)),3);
-%     end
-% end
-% cycle=slask;
+repeat=5;
+slask=cycle;
+if repeat>1,
+    for i=2:repeat,
+        slask = [slask; cycle];
+        slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),1) = slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),1) + slask(length(slask(:,1))-length(cycle(:,1)),1);
+        slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),3) = slask(length(slask(:,1))-length(cycle(:,1))+1:length(slask(:,1)),3) + slask(length(slask(:,1))-length(cycle(:,1)),3);
+    end
+end
+cycle=slask;
 endtime = max(cycle(:,1));
 
 %  Introduce ERS trigger when applicable
@@ -185,21 +185,21 @@ elseif ERS == 1,        % EV with ERS
     end
 end
 
-% figure, clf
-% set(0,'units','pixels')
-% h=get(0,'Screensize');
-% set(gcf,'OuterPosition',[h(3)/2,h(4)/4,h(3)/2-10,h(4)/2-10]);
-% 
-% subplot(2,1,1)
-% plot(cycle(:,3)/1000,cycle(:,2)*3.6)
-% title('Speed reference [km/h]')
-% xlabel('Distance [km]')
-% axis([0 max(cycle(:,3))/1000 0 150]), grid
-% subplot(2,1,2)
-% plot(cycle(:,3)/1000,cycle(:,6))
-% title('ERS precense')
-% xlabel('Distance [km]')
-% axis([0 max(cycle(:,3))/1000 -0.1 1.1]), grid
+figure, clf
+set(0,'units','pixels')
+h=get(0,'Screensize');
+set(gcf,'OuterPosition',[h(3)/2,h(4)/4,h(3)/2-10,h(4)/2-10]);
+
+subplot(2,1,1)
+plot(cycle(:,3)/1000,cycle(:,2)*3.6)
+title('Speed reference [km/h]')
+xlabel('Distance [km]')
+axis([0 max(cycle(:,3))/1000 0 150]), grid
+subplot(2,1,2)
+plot(cycle(:,3)/1000,cycle(:,6))
+title('ERS precense')
+xlabel('Distance [km]')
+axis([0 max(cycle(:,3))/1000 -0.1 1.1]), grid
 
 
 % ******************** Road and Performance *******************************

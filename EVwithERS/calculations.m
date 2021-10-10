@@ -6,7 +6,7 @@
 
 Batt_cost         = 100       % [€/kWh]
 Batt_max_yrs      = 15          % TODO Hur ska vi använda denna?
-Batt_max_km       = 50000       % TODO fatta cyclecounter hörru
+Batt_max_km       = 500000       % TODO fatta cyclecounter hörru
 %Batt_weight       = 6         % [kg/kWh]   (battery pack weight)
 
 %tot_batt_cost = @(Wbatt) Batt_cost*Wbatt;
@@ -22,7 +22,7 @@ pup_lifetime      = 130000    % [km]  valid for both truck and car
 %Fast chargers
 
 FC_per_ev         = 0.01      % [fast chargers / nbr of EVs]
-FC_ERC_lifetime   = 15        % [years]
+FC_ERS_lifetime   = 15        % [years]
 
 yearly_d_car      = 13000     % [km/year]
 yearly_d_truck    = 100000    % [km/year]
