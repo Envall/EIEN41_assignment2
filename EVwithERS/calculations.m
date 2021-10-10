@@ -31,11 +31,11 @@ yearly_d_truck    = 100000    % [km/year]
 % ADT_truck = 500 - 2000
  
 electricity_cost  = 0.15       % [€/kWh]
-FC_cost           = 350        % [€/kW]
+FC_cost           = 350*250        % [€]  assuming 250 kW charger
 
 
 
-k0 = 300e+3           % [€/MW]
+k0 = 300              % [€/MW]
 k1 = 150e+3           % [€/km]
 k2 = 500e+3           % [€/kW]
 
