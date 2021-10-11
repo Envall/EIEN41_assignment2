@@ -25,16 +25,13 @@ for i_Wbatt=1:length(Wbatt_vector)
 % ------------------------ Cost of battery --------------------------------
 
     lifeconsumed = CycleCounter(SOC(:,2));
-    C_batt_wear(i_kers, i_ders, i_Wbatt, i_ADTcar) = lifeconsumed * Batt_cost / cycle_distance; % €/km
+    C_batt_wear(i_Wbatt, i_ADTcar) = lifeconsumed * Batt_cost / cycle_distance; % €/km
     
     
-% ------------------------ Cost of pickup ---------------------------------
-    
-    C_pup = pup_car_cost / pup_lifetime;
 
 % -------------------------- Cost of FC -----------------------------------
     
-    C_fc = nbrFC * FC_cost / ADTcar / cycle_distance);   % €/(bil*km)
+    C_fc(i_Wbatt, i_ADTcar) = nbrFC * FC_cost / ADTcar / cycle_distance;   % €/(bil*km)
     
 % ----------------------- Cost of electricity -----------------------------
     
@@ -42,11 +39,11 @@ for i_Wbatt=1:length(Wbatt_vector)
     
     El_per_car = consumption / 10; % kWh/(km*bil)
     
-    C_electricity(i_kers, i_ders, i_Wbatt, i_ADTcar) = electricity_cost * El_per_car;
+    C_electricity(i_Wbatt, i_ADTcar) = electricity_cost * El_per_car;
     
 % ----------------------- Cost of electricity [€/(km*bil)] ----------------
     
-    C_tot(i_kers, i_ders, i_Wbatt, i_ADTcar) = C_batt_wear(i_kers, i_ders, i_Wbatt, i_ADTcar) + C_ers(i_kers, i_ders, i_Wbatt, i_ADTcar) + C_electricity(i_kers, i_ders, i_Wbatt, i_ADTcar) + C_pup;
+    C_tot(i_Wbatt, i_ADTcar) = C_batt_wear(i_Wbatt, i_ADTcar) + C_electricity(i_Wbatt, i_ADTcar) + C_fc(i_Wbatt, i_ADTcar);
     
     
     i_kers
@@ -55,6 +52,5 @@ for i_Wbatt=1:length(Wbatt_vector)
     i_ADTcar
             end
         end
-    end
-end
+        
 
