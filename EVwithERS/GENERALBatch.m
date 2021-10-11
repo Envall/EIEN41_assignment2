@@ -4,10 +4,9 @@ calculations;
 
 kers_vector = [0.1:0.1:0.7];
 ders_vector = [4000 12000 20000];
-ADTcar_vector = [1000 10000 100000];
-ADTtruck_vector = [500 750 1000 1250 1500 1750 2000];
+ADTcar_vector = [100 500 1000 2000];
+ADTtruck_vector = [100 500 1000 2000];
 Wbatt_vector = [40:10:100];    % kWh
-
 
 
 for i_kers=1:length(kers_vector)
@@ -45,7 +44,7 @@ for i_kers=1:length(kers_vector)
     
     N_lanes = 1;
     
-    hej = (ADTcar*365*15); % Delar upp dist.kostnad på alla biler under vägens livstid
+    hej = (ADTcar*365*15); % Delar upp distr.kostnad på alla biler under vägens livstid
     
     C_ers(i_kers, i_ders, i_Wbatt, i_ADTcar) = (k0 * P_ers) + (k1 * L_ers / hej) + (k2*kers*L_ers*N_lanes / hej);
     

@@ -35,7 +35,7 @@ FC_cost           = 350*250        % [€]  assuming 250 kW charger
 
 
 
-k0 = 300              % [€/MW]
+k0 = 300              % [€/kW]
 k1 = 150e+3           % [€/km]
 k2 = 500e+3           % [€/kW]
 

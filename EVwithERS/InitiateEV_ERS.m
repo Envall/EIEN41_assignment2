@@ -23,7 +23,7 @@ Vehicle = 1;
 switch Vehicle
     case 1 % Car
         Wbatt = Wbatt*3.6e6;  % Battery Energy in [Ws], XX in [kWh]
-        Mv = 1864+batt_weight;         % Vehicle weight [kg]
+        Mv = 1864+batt_weight+pup_base_weight_c;         % Vehicle weight [kg]
         rw = 0.30;	        % wheel radius (m)
         Cd = 0.29; 	        % air_resistance Check this!
         Cr = 0.007;	        % roll resistance Check this!
@@ -58,8 +58,8 @@ switch Vehicle
         MinShiftTime = 2;
         % Paux = 4000;      % Without AC
     case 4 % Long Haul Truck
-        Wbatt=10000*3.6e6;
-        Mv = 40000;         % Vehicle curb weight + 250 kg passenger and cargo
+        Wbatt=Wbatt*3.6e6;
+        Mv = 40000+batt_weight+pup_base_weight_c;         % Vehicle curb weight + 250 kg passenger and cargo
         rw = 0.506;	        % wheel radius (m)
         Cd = 0.6; 	        % air_resistance. (Sports Car 0.3-0.4, Ecomony Car 0.4-0.5, Pickup Truck 0.5, Tractor-Trailer,with fairings 0.6-0.7, Tractor-Trailer 0.7-0.9)
         Cr = 0.0032;	    % roll resistance (0.006...0.008 for low roll resist tires. 0.01...0.015 ordinary tires)
