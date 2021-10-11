@@ -59,7 +59,7 @@ switch Vehicle
         % Paux = 4000;      % Without AC
     case 4 % Long Haul Truck
         Wbatt=Wbatt*3.6e6;
-        Mv = 40000+batt_weight+pup_base_weight_c;         % Vehicle curb weight + 250 kg passenger and cargo
+        Mv = 40000+batt_weight+pup_base_weight_t;         % Vehicle curb weight + 250 kg passenger and cargo
         rw = 0.506;	        % wheel radius (m)
         Cd = 0.6; 	        % air_resistance. (Sports Car 0.3-0.4, Ecomony Car 0.4-0.5, Pickup Truck 0.5, Tractor-Trailer,with fairings 0.6-0.7, Tractor-Trailer 0.7-0.9)
         Cr = 0.0032;	    % roll resistance (0.006...0.008 for low roll resist tires. 0.01...0.015 ordinary tires)
@@ -76,7 +76,7 @@ end
 % *** Efficiencies etc
 
 Drive_cycle = 15;
-Vehicle = 1;
+Vehicle = 4;
 
 ERS = 1;                        % 0 = No range extender, 1 = ERS range extender
 %ders = 1000;                    % Length at which ERS tracks are repeated 
