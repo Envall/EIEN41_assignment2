@@ -4,8 +4,8 @@ calculations;
 
 kers_vector = [0.1:0.1:0.7];
 ders_vector = [4000 12000 20000];
-ADTcar_vector = [100 500 1000 2000];
-ADTtruck_vector = [100 500 1000 2000];
+ADTcar_vector = [1000:3000:10000];
+ADTtruck_vector = [1000:500:2000];
 Wbatt_vector = [40:10:100];    % kWh
 
 
@@ -42,7 +42,7 @@ for i_kers=1:length(kers_vector)
     % ERS HW/Distribution term
     L_ers = DIST(length(DIST)); % length of road segment with ERS
     
-    N_lanes = 1;
+    N_lanes = 2;
     
     hej = (ADTcar*365*15); % Delar upp distr.kostnad på alla biler under vägens livstid
     
