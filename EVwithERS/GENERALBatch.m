@@ -1,6 +1,6 @@
 clear all
 
-calculations;
+calculations;  % contains all constants used for calculating costs
 
 kers_vector = [0.1:0.1:0.7];
 ders_vector = [4000 12000 20000];
